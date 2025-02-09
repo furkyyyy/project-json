@@ -1,0 +1,42 @@
+[
+  {
+    "id": "STU-101",
+    "name": "Warner Bros. Pictures",
+    "logoUrl": "https://example.com/images/studios/warner-bros-logo.jpg",
+    "foundedYear": 1923,
+    "founder": "Harry Warner",
+    "headquarters": "Burbank, California"
+  },
+  {
+    "id": "STU-102",
+    "name": "A24",
+    "logoUrl": "https://example.com/images/studios/a24-logo.jpg",
+    "foundedYear": 2012,
+    "founder": "Daniel Katz, David Fenkel, John Hodges",
+    "headquarters": "New York, New York"
+  },
+  {
+    "id": "STU-103",
+    "name": "Focus Features",
+    "logoUrl": "https://example.com/images/studios/focus-features-logo.jpg",
+    "foundedYear": 2002,
+    "founder": "David Linde, James Schamus",
+    "headquarters": "Universal City, California"
+  },
+  {
+    "id": "STU-104",
+    "name": "Paramount Pictures",
+    "logoUrl": "https://example.com/images/studios/paramount-logo.jpg",
+    "foundedYear": 1912,
+    "founder": "Adolph Zukor",
+    "headquarters": "Los Angeles, California"
+  },
+  {
+    "id": "STU-105",
+    "name": "Marvel Studios",
+    "logoUrl": "https://example.com/images/studios/marvel-studios-logo.jpg",
+    "foundedYear": 1993,
+    "founder": "Avi Arad, Toyoo Goto",
+    "headquarters": "Burbank, California"
+  }
+]

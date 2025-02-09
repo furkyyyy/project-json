@@ -1,0 +1,222 @@
+[
+  {
+    "id": "MOV-001",
+    "title": "Dune",
+    "description": "A noble family becomes embroiled in a war for control over the galaxy's most valuable asset while its heir becomes troubled by visions of a dark future.",
+    "genre": "Science Fiction",
+    "director": "Denis Villeneuve",
+    "releaseYear": 2021,
+    "inTheather": false,
+    "releaseDate": "2021-10-22",
+    "imageUrl": "https://example.com/images/movies/dune.jpg",
+    "rating": "PG-13",
+    "actors": ["Timothée Chalamet", "Rebecca Ferguson", "Oscar Isaac"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-101",
+      "name": "Warner Bros. Pictures",
+      "logoUrl": "https://example.com/images/studios/warner-bros-logo.jpg",
+      "foundedYear": 1923,
+      "founder": "Harry Warner",
+      "headquarters": "Burbank, California"
+    }
+  },
+  {
+    "id": "MOV-002",
+    "title": "The Batman",
+    "description": "Batman ventures into Gotham City's underworld when a sadistic killer leaves behind a trail of cryptic clues.",
+    "genre": "Action",
+    "director": "Matt Reeves",
+    "releaseYear": 2022,
+    "inTheather": false,
+    "releaseDate": "2022-03-04",
+    "imageUrl": "https://example.com/images/movies/the-batman.jpg",
+    "rating": "PG-13",
+    "actors": ["Robert Pattinson", "Zoë Kravitz", "Paul Dano"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-101",
+      "name": "Warner Bros. Pictures",
+      "logoUrl": "https://example.com/images/studios/warner-bros-logo.jpg",
+      "foundedYear": 1923,
+      "founder": "Harry Warner",
+      "headquarters": "Burbank, California"
+    }
+  },
+  {
+    "id": "MOV-003",
+    "title": "Everything Everywhere All at Once",
+    "description": "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.",
+    "genre": "Science Fiction",
+    "director": "Daniel Kwan, Daniel Scheinert",
+    "releaseYear": 2022,
+    "inTheather": false,
+    "releaseDate": "2022-03-25",
+    "imageUrl": "https://example.com/images/movies/everything-everywhere.jpg",
+    "rating": "R",
+    "actors": ["Michelle Yeoh", "Ke Huy Quan", "Jamie Lee Curtis"],
+    "contentRating": "Mature",
+    "studio": {
+      "id": "STU-102",
+      "name": "A24",
+      "logoUrl": "https://example.com/images/studios/a24-logo.jpg",
+      "foundedYear": 2012,
+      "founder": "Daniel Katz, David Fenkel, John Hodges",
+      "headquarters": "New York, New York"
+    }
+  },
+  {
+    "id": "MOV-004",
+    "title": "The Northman",
+    "description": "A Viking prince sets out on a quest to avenge his father's murder.",
+    "genre": "Action",
+    "director": "Robert Eggers",
+    "releaseYear": 2022,
+    "inTheather": true,
+    "releaseDate": "2022-04-22",
+    "imageUrl": "https://example.com/images/movies/the-northman.jpg",
+    "rating": "R",
+    "actors": ["Alexander Skarsgård", "Nicole Kidman", "Anya Taylor-Joy"],
+    "contentRating": "Mature",
+    "studio": {
+      "id": "STU-103",
+      "name": "Focus Features",
+      "logoUrl": "https://example.com/images/studios/focus-features-logo.jpg",
+      "foundedYear": 2002,
+      "founder": "David Linde, James Schamus",
+      "headquarters": "Universal City, California"
+    }
+  },
+  {
+    "id": "MOV-005",
+    "title": "Top Gun: Maverick",
+    "description": "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
+    "genre": "Action",
+    "director": "Joseph Kosinski",
+    "releaseYear": 2022,
+    "inTheather": true,
+    "releaseDate": "2022-05-27",
+    "imageUrl": "https://example.com/images/movies/top-gun-maverick.jpg",
+    "rating": "PG-13",
+    "actors": ["Tom Cruise", "Miles Teller", "Jennifer Connelly"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-104",
+      "name": "Paramount Pictures",
+      "logoUrl": "https://example.com/images/studios/paramount-logo.jpg",
+      "foundedYear": 1912,
+      "founder": "Adolph Zukor",
+      "headquarters": "Los Angeles, California"
+    }
+  },
+  {
+    "id": "MOV-006",
+    "title": "Joker",
+    "description": "A mentally troubled comedian becomes a psychopathic criminal mastermind in Gotham City.",
+    "genre": "Crime",
+    "director": "Todd Phillips",
+    "releaseYear": 2019,
+    "inTheather": false,
+    "releaseDate": "2019-10-04",
+    "imageUrl": "https://example.com/images/movies/joker.jpg",
+    "rating": "R",
+    "actors": ["Joaquin Phoenix", "Robert De Niro", "Zazie Beetz"],
+    "contentRating": "Mature",
+    "studio": {
+      "id": "STU-101",
+      "name": "Warner Bros. Pictures",
+      "logoUrl": "https://example.com/images/studios/warner-bros-logo.jpg",
+      "foundedYear": 1923,
+      "founder": "Harry Warner",
+      "headquarters": "Burbank, California"
+    }
+  },
+  {
+    "id": "MOV-007",
+    "title": "The Dark Knight",
+    "description": "When the menace known as the Joker emerges, Batman must confront chaos in Gotham City.",
+    "genre": "Action",
+    "director": "Christopher Nolan",
+    "releaseYear": 2008,
+    "inTheather": false,
+    "releaseDate": "2008-07-18",
+    "imageUrl": "https://example.com/images/movies/the-dark-knight.jpg",
+    "rating": "PG-13",
+    "actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-101",
+      "name": "Warner Bros. Pictures",
+      "logoUrl": "https://example.com/images/studios/warner-bros-logo.jpg",
+      "foundedYear": 1923,
+      "founder": "Harry Warner",
+      "headquarters": "Burbank, California"
+    }
+  },
+  {
+    "id": "MOV-008",
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through dream-sharing technology is given a chance to have his criminal record erased.",
+    "genre": "Science Fiction",
+    "director": "Christopher Nolan",
+    "releaseYear": 2010,
+    "inTheather": false,
+    "releaseDate": "2010-07-16",
+    "imageUrl": "https://example.com/images/movies/inception.jpg",
+    "rating": "PG-13",
+    "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-101",
+      "name": "Warner Bros. Pictures",
+      "logoUrl": "https://example.com/images/studios/warner-bros-logo.jpg",
+      "foundedYear": 1923,
+      "founder": "Harry Warner",
+      "headquarters": "Burbank, California"
+    }
+  },
+  {
+    "id": "MOV-009",
+    "title": "Avengers: Endgame",
+    "description": "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more to reverse Thanos' actions and restore balance.",
+    "genre": "Action",
+    "director": "Anthony Russo, Joe Russo",
+    "releaseYear": 2019,
+    "inTheather": false,
+    "releaseDate": "2019-04-26",
+    "imageUrl": "https://example.com/images/movies/avengers-endgame.jpg",
+    "rating": "PG-13",
+    "actors": ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-105",
+      "name": "Marvel Studios",
+      "logoUrl": "https://example.com/images/studios/marvel-studios-logo.jpg",
+      "foundedYear": 1993,
+      "founder": "Avi Arad, Toyoo Goto",
+      "headquarters": "Burbank, California"
+    }
+  },
+  {
+    "id": "MOV-010",
+    "title": "Iron Man",
+    "description": "After being held captive in an Afghan cave, an industrialist creates a unique weaponized suit of armor to fight evil.",
+    "genre": "Action",
+    "director": "Jon Favreau",
+    "releaseYear": 2008,
+    "inTheather": false,
+    "releaseDate": "2008-05-02",
+    "imageUrl": "https://example.com/images/movies/iron-man.jpg",
+    "rating": "PG-13",
+    "actors": ["Robert Downey Jr.", "Gwyneth Paltrow", "Jeff Bridges"],
+    "contentRating": "Teen",
+    "studio": {
+      "id": "STU-105",
+      "name": "Marvel Studios",
+      "logoUrl": "https://example.com/images/studios/marvel-studios-logo.jpg",
+      "foundedYear": 1993,
+      "founder": "Avi Arad, Toyoo Goto",
+      "headquarters": "Burbank, California"
+    }
+  }
+]
