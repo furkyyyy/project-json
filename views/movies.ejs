@@ -1,0 +1,40 @@
+<%- include("partials/navbar") %>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Movies</h1>
+
+    <form method="GET" class="row mb-4">
+        <div class="col-md-4">
+            <input type="text" name="genre" class="form-control" placeholder="Search for genre" value="<%= genre %>">
+        </div>
+        <div class="col-md-3">
+            <select name="sort" class="form-select">
+                <option value="asc" <%= sortDirection === "asc" ? "selected" : "" %>>Sort A-Z</option>
+                <option value="desc" <%= sortDirection === "desc" ? "selected" : "" %>>Sort Z-A</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% movies.forEach(movie => { %>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="<%= movie.imageUrl %>" class="card-img-top" alt="<%= movie.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= movie.title %></h5>
+                        <p class="card-text"><%= movie.releaseYear %> - <%= movie.genre %></p>
+                        <p class="card-text"><strong>In Theather:</strong> <%= movie.inTheather ? "Yes" : "No" %></p>
+                        <p class="card-text"><strong>Rating:</strong> <%= movie.rating %></p>
+                        <p class="card-text"><strong>Studio:</strong> <%= movie.studio.name %></p>
+                        <a href="/detail-movie/<%= movie.id %>" class="btn btn-outline-primary">More info</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include("partials/footer") %>

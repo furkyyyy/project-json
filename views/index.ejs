@@ -1,0 +1,97 @@
+<%- include("partials/navbar") %>
+
+<div class="container mt-4">
+    <h1>All Movies</h1>
+
+    <form method="GET" class="row mb-4">
+        <div class="col-md-4">
+            <input type="text" name="title" class="form-control" placeholder="Search for title" value="<%= title %>">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>    
+
+    <table class="table table-bordered table-hover align-middle mt-4">
+        <thead class="table-secondary">
+            <tr>
+                <th>
+                    <a href="/?sort=title&order=<%= sort === 'title' && order === 'asc' ? 'desc' : 'asc' %>">
+                        Name
+                        <% if (sort === 'title') { %>
+                            <%= order === 'desc' ? '▲' : '▼' %>
+                        <% } %>
+                    </a>
+                </th>
+                <th>
+                    <a href="/?sort=releaseYear&order=<%= sort === 'releaseYear' && order === 'asc' ? 'desc' : 'asc' %>">
+                        Release Year
+                        <% if (sort === 'releaseYear') { %>
+                            <%= order === 'desc' ? '▲' : '▼' %>
+                        <% } %>
+                    </a>
+                </th>
+                <th>
+                    <a href="/?sort=genre&order=<%= sort === 'genre' && order === 'asc' ? 'desc' : 'asc' %>">
+                        Genre
+                        <% if (sort === 'genre') { %>
+                            <%= order === 'desc' ? '▲' : '▼' %>
+                        <% } %>
+                    </a>
+                </th>
+                <th>
+                    <a href="/?sort=studio&order=<%= sort === 'studio' && order === 'asc' ? 'desc' : 'asc' %>">
+                        Studio
+                        <% if (sort === 'studio') { %>
+                            <%= order === 'desc' ? '▲' : '▼' %>
+                        <% } %>
+                    </a>
+                </th>
+                <th>
+                    <a href="/?sort=inTheather&order=<%= sort === 'inTheather' && order === 'asc' ? 'desc' : 'asc' %>">
+                        In Theather
+                        <% if (sort === 'inTheather') { %>
+                            <%= order === 'desc' ? '🔴' : '🟢' %>
+                        <% } %>
+                    </a>
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% movies.forEach(movie => { %>
+                <tr>
+                    <td>
+                        <img src="<%= movie.imageUrl %>" alt="<%= movie.title %>" style="height: 50px; width: auto;" class="me-2">
+                        <%= movie.title %>
+                    </td>
+                    <td><%= movie.releaseYear %></td>
+                    <td class="<%= movie.genre === 'Action' ? 'bg-danger' : movie.genre === 'Science Fiction' ? 'bg-warning' : movie.genre === 'Crime' ? 'bg-dark' : 'bg-secondary' %> text-white">
+                        <%= movie.genre %>
+                    </td>
+                    <td class="p-0">
+                        <a href="/detail-studio/<%= movie.studio.id %>" class="d-flex align-items-center p-3 text-white text-decoration-none"
+                           style="background-color:
+                            <%= movie.studio.name === 'Marvel Studios' ? '#ed1d24' :
+                                movie.studio.name === 'Warner Bros. Pictures' ? '#0058a3' :
+                                movie.studio.name === 'Paramount Pictures' ? '#003087' :
+                                movie.studio.name === 'A24' ? '#000000' :
+                                movie.studio.name === 'Focus Features' ? '#333333' :
+                                '#6c757d' %>">
+                            <span class="bg-light rounded p-1 me-2 d-inline-flex align-items-center justify-content-center" style="height: 35px;">
+                                <img src="<%= movie.studio.logoUrl %>" alt="<%= movie.studio.name %>" style="height: 30px; background-color: antiquewhite;">
+                            </span>
+                            <%= movie.studio.name %>
+                        </a>
+                    </td>
+                    <td class="<%= movie.inTheather ? 'bg-success' : 'bg-danger' %>"></class=>
+                    <td>
+                        <a href="/detail-movie/<%= movie.id %>" class="btn btn-sm btn-outline-primary">View</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("partials/footer") %>
