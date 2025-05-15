@@ -1,5 +1,6 @@
 <%- include("partials/navbar") %>
 
+<main class="flex-fill">
 <div class="container mt-4">
     <h1>All Movies</h1>
 
@@ -24,10 +25,10 @@
                     </a>
                 </th>
                 <th>
-                    <a href="/?sort=releaseYear&order=<%= sort === 'releaseYear' && order === 'asc' ? 'desc' : 'asc' %>">
+                    <a href="/?sort=releaseYear&order=<%= sort === 'releaseYear' && order === 'desc' ? 'asc' : 'desc' %>">
                         Release Year
                         <% if (sort === 'releaseYear') { %>
-                            <%= order === 'desc' ? '▲' : '▼' %>
+                            <%= order === 'desc' ? '▼' : '▲' %>
                         <% } %>
                     </a>
                 </th>
@@ -48,10 +49,10 @@
                     </a>
                 </th>
                 <th>
-                    <a href="/?sort=inTheather&order=<%= sort === 'inTheather' && order === 'asc' ? 'desc' : 'asc' %>">
+                    <a href="/?sort=inTheather&order=<%= sort === 'inTheather' && order === 'desc' ? 'asc' : 'desc' %>">
                         In Theather
                         <% if (sort === 'inTheather') { %>
-                            <%= order === 'desc' ? '🔴' : '🟢' %>
+                            <%= order === 'desc' ? '🟢' : '🔴' %>
                         <% } %>
                     </a>
                 </th>
@@ -87,11 +88,13 @@
                     <td class="<%= movie.inTheather ? 'bg-success' : 'bg-danger' %>"></class=>
                     <td>
                         <a href="/detail-movie/<%= movie.id %>" class="btn btn-sm btn-outline-primary">View</a>
+                        <a href="/edit-movie/<%= movie.id %>" class="btn btn-sm btn-outline-warning">Edit</a>
                     </td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
 </div>
+</main>
 
 <%- include("partials/footer") %>

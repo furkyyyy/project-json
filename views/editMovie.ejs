@@ -1,0 +1,63 @@
+<%- include("partials/navbar") %>
+
+<main class="flex-fill">
+<div class="container mt-4">
+    <h1>Edit <%= movie.title %></h1>
+
+    <form action="/edit-movie/<%= movie.id %>" method="POST"> 
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" id="title" class="form-control" value="<%= movie.title %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="genre" class="form-label">Genre</label>
+            <input type="text" name="genre" id="genre" class="form-control" value="<%= movie.genre %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="releaseYear" class="form-label">Release Year</label>
+            <input type="number" name="releaseYear" id="releaseYear" class="form-control" value="<%= movie.releaseYear %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="inTheather" class="form-label">In Theater</label>
+            <select name="inTheather" id="inTheather" class="form-select">
+                <option value="true" <%= movie.inTheather ? "selected" : "" %>>Yes</option>
+                <option value="false" <%= !movie.inTheather ? "selected" : "" %>>No</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="studio.id" class="form-label">Studio</label>
+            <select name="studio.id" id="studio.id" class="form-select">
+                <% studios.forEach(studio => { %>
+                    <option value="<%= studio.id %>" <%= studio.id === movie.studio.id ? "selected" : "" %>>
+                        <%= studio.name %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="imageUrl" class="form-label">Image URL</label>
+            <input type="text" name="imageUrl" id="imageUrl" class="form-control" value="<%= movie.imageUrl %>">
+        </div>
+
+        <div class="mb-3">
+            <label for="studio.name" class="form-label">Studio Name</label>
+            <input type="text" name="studio.name" id="studio.name" class="form-control" value="<%= movie.studio.name %>">
+        </div>
+
+        <div class="mb-3">
+            <label for="studio.logoUrl" class="form-label">Studio Logo URL</label>
+            <input type="text" name="studio.logoUrl" id="studio.logoUrl" class="form-control" value="<%= movie.studio.logoUrl %>">
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</main>
+
+<%- include("partials/footer") %>

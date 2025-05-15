@@ -1,27 +1,17 @@
 import express, { Request, Response } from "express";
+import { getStudios } from "../database";
 import { Studio } from "../interfaces";
 
-export default function studioRouter(studios: Studio[]) {
-    const router = express.Router();
+const router = express.Router();
 
-    router.get("/", (req: Request, res: Response) => {
-        let sortedStudios = studios;
+router.get("/", async (req: Request, res: Response) => {
+    const sortDirection = req.query.sort === "desc" ? "desc" : "asc";
+    const studios: Studio[] = await getStudios(sortDirection);
 
-        const sortDirection = req.query.sort === "desc" ? "desc" : "asc";
-
-        sortedStudios = studios.sort((a, b) => {
-            if (sortDirection === "asc") {
-                return a.name.localeCompare(b.name);
-            } else {
-                return b.name.localeCompare(a.name);
-            }
-        });
-
-        res.render("studios", {
-            studios: sortedStudios,
-            sortDirection: sortDirection
-        });
+    res.render("studios", {
+        studios: studios,
+        sortDirection: sortDirection
     });
+});
 
-    return router;
-}
+export default router;

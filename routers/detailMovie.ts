@@ -1,24 +1,24 @@
 import express, { Request, Response } from "express";
+import { getMovieById, getStudioById } from "../database";
 import { Movie, Studio } from "../interfaces";
 
-export default function detailMovieRouter(movies: Movie[], studios: Studio[]) {
-    const router = express.Router();
+const router = express.Router();
 
-    router.get("/:id", (req: Request, res: Response) => {
-        const movie = movies.find(m => m.id === req.params.id);
+router.get("/:id", async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const movie: Movie | null = await getMovieById(id);
 
-        if (!movie) {
-            res.status(404).send("Movie not found");
-            return;
-        }
+    if (!movie) {
+        res.status(404).send("Movie not found");
+        return;
+    }
 
-        const studio = studios.find(s => s.id === movie.studio.id);
+    const studio: Studio | null = await getStudioById(movie.studio.id);
 
-        res.render("detailMovie", {
-            movie: movie,
-            studio: studio
-        });
+    res.render("detailMovie", {
+        movie: movie,
+        studio: studio
     });
+});
 
-    return router;
-}
+export default router;

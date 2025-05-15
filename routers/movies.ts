@@ -1,36 +1,30 @@
 import express, { Request, Response } from "express";
+import { getMovies, getStudios } from "../database";
 import { Movie, Studio } from "../interfaces";
 
-export default function movieRouter(movies: Movie[], studios: Studio[]) {
-    const router = express.Router();
+const router = express.Router();
 
-    router.get("/", (req: Request, res: Response) => {
-        let filteredMovies: Movie[] = movies;
+router.get("/", async (req: Request, res: Response) => {
+    const genre = typeof req.query.genre === "string" ? req.query.genre : "";
+    const sortDirection = req.query.sort === "desc" ? "desc" : "asc";
 
-        const genre = typeof req.query.genre === "string" ? req.query.genre : "";
-        const sortDirection = req.query.sort === "desc" ? "desc" : "asc";
+    const movies: Movie[] = await getMovies("title", sortDirection, "");
 
-        if (genre) {
-            filteredMovies = filteredMovies.filter(movie =>
-                movie.genre.toLowerCase().includes(genre.toLowerCase())
-            );
-        }
+    let filteredMovies: Movie[] = movies;
+    if (genre) {
+        filteredMovies = filteredMovies.filter(movie =>
+            movie.genre.toLowerCase().includes(genre.toLowerCase())
+        );
+    }
 
-        filteredMovies.sort((a, b) => {
-            if (sortDirection === "asc") {
-                return a.title.localeCompare(b.title);
-            } else {
-                return b.title.localeCompare(a.title);
-            }
-        });
+    const studios: Studio[] = await getStudios("desc");
 
-        res.render("movies", {
-            movies: filteredMovies,
-            genre: genre,
-            sortDirection: sortDirection,
-            studios: studios
-        });
+    res.render("movies", {
+        movies: filteredMovies,
+        genre: genre,
+        sortDirection: sortDirection,
+        studios: studios
     });
+});
 
-    return router;
-}
+export default router;
