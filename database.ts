@@ -1,14 +1,18 @@
 import { Collection, MongoClient, ObjectId } from "mongodb";
 import { Movie, Studio } from "./interfaces";
-
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 dotenv.config();
+
+import { User } from "./types";
+import bcrypt from "bcrypt";
 
 export const client = new MongoClient(process.env.MONGO_URI || "mongodb://localhost:27017");
 
 export const moviesCollection: Collection<Movie> = client.db("project").collection<Movie>("movies");
 export const studiosCollection: Collection<Studio> = client.db("project").collection<Studio>("studios");
+
+const saltRounds: number = 10;
 
 async function exit() {
   try {
@@ -18,7 +22,7 @@ async function exit() {
     console.error(error);
   }
   process.exit(0);
-}
+};
 
 async function seed() {
     try{
@@ -38,17 +42,72 @@ async function seed() {
     } catch (error){
         console.log("Seeding failed: ", error);
     }
-}
+};
 
 export async function connect() {
   try {
     await client.connect();
     console.log("Connected to database");
     await seed();
+    await createInitialUsers();
     process.on("SIGINT", exit);
   } catch (error) {
     console.error(error);
   }
+}
+
+export const usersCollection: Collection<User> = client.db("project").collection<User>("users");
+
+async function createInitialUsers() {
+    if (await usersCollection.countDocuments() > 0) {
+        return;
+    }
+
+    const adminEmail: string | undefined = process.env.ADMIN_EMAIL;
+    const adminUsername: string | undefined = process.env.ADMIN_USERNAME;
+    const adminPassword: string | undefined = process.env.ADMIN_PASSWORD;
+    const userEmail: string | undefined = process.env.USER_EMAIL;
+    const userUsername: string | undefined = process.env.USER_USERNAME;
+    const userPassword: string | undefined = process.env.USER_PASSWORD;
+
+    if (adminEmail === undefined || adminPassword === undefined || userEmail === undefined || userPassword === undefined) {
+        throw new Error("Emails and passwords must be set in environment");
+    }
+    
+    await usersCollection.insertMany([
+        {
+            email: adminEmail,
+            username: adminUsername,
+            password: await bcrypt.hash(adminPassword, saltRounds),
+            role: "ADMIN"
+        },
+        {
+            email: userEmail,
+            username: userUsername,
+            password: await bcrypt.hash(userPassword, saltRounds),
+            role: "USER"
+        }
+    ]);
+};
+
+export async function login(email: string, password: string): Promise<User> {
+    if (!email || !password) {
+        throw new Error("Email and password required");
+    }
+
+    let user: User | null = await usersCollection.findOne<User>({ email: email });
+
+    if (!user || !user.password) {
+        throw new Error("Invalid email");
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+        throw new Error("Invalid password");
+    }
+
+    return user;
 }
 
 export async function getMovies(sort: string, order: string, title: string): Promise<Movie[]> {

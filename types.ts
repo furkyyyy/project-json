@@ -17,3 +17,11 @@ export interface Movie {
   inTheather: boolean;
   studio: Studio;
 }
+
+export interface User {
+  _id?: ObjectId;
+  email?: string;
+  username?: string;
+  password?: string;
+  role: "ADMIN" | "USER";
+}

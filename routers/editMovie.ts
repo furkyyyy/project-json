@@ -1,11 +1,12 @@
 import express, { Request, Response } from "express";
 import { getMovieById, updateMovie, getStudios } from "../database";
-// import { ObjectId } from "mongodb";
 import { Movie, Studio } from "../interfaces";
+import { secureMiddleware } from "../middleware/secureMiddleware";
+import { adminMiddleware } from "../middleware/adminMiddleware";
 
 const router = express.Router();
 
-router.get("/:id", async (req: Request, res: Response) => {
+router.get("/:id", secureMiddleware, adminMiddleware, async (req: Request, res: Response) => {
     const movie: Movie | null = await getMovieById(req.params.id);
     const studios: Studio[] = await getStudios("desc");
     
@@ -20,7 +21,7 @@ router.get("/:id", async (req: Request, res: Response) => {
     });
 });
 
-router.post("/:id", async (req: Request, res: Response) => {
+router.post("/:id", secureMiddleware, adminMiddleware, async (req: Request, res: Response) => {
     const id = req.params.id;
     const updatedMovie = req.body;
 

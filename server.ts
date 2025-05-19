@@ -1,12 +1,16 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import path from "path";
-import { Movie, Studio } from "./interfaces";
 import movieRouter from "./routers/movies";
 import detailMovieRouter from "./routers/detailMovie";
 import studioRouter from "./routers/studios";
 import detailStudioRouter from "./routers/detailStudio";
-import { connect, getMovies, getStudios } from "./database";
+import { connect } from "./database";
 import editMovieRouter from "./routers/editMovie";
+import cookieParser from "cookie-parser";
+import session from "./session";
+import { dashboardRouter } from "./routers/dashboardRouter";
+import { loginRouter } from "./routers/login";
+import registerRouter from "./routers/register";
 
 const app: Express = express();
 
@@ -15,38 +19,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
+app.use(cookieParser());
+app.use(session);
 
-app.set("port", 3000);
+app.set("port", process.env.PORT || 3000);
 
 app.use((req, res, next) => {
     res.locals.path = req.path;
+    res.locals.user = null;
     next();
 });
 
+app.use("/", dashboardRouter());
+app.use("/", loginRouter());
 app.use("/movies", movieRouter);
 app.use("/detail-movie", detailMovieRouter);
 app.use("/studios", studioRouter);
 app.use("/detail-studio", detailStudioRouter);
 app.use("/edit-movie", editMovieRouter);
-
-app.get("/", async (req: Request, res: Response) => {
-    const title = typeof req.query.title === "string" ? req.query.title : "";
-    const sort = typeof req.query.sort === "string" ? req.query.sort : "title";
-    const order = req.query.order === "desc" ? "desc" : "asc";
-
-    const movies: Movie[] = await getMovies(sort, order, title);
-    const studios: Studio[] = await getStudios("desc");
-
-    res.render("index", {
-        movies,
-        sort,
-        order,
-        studios,
-        title
-    });
-});
+app.use(registerRouter);
 
 app.listen(app.get("port"), async () => {
-    await connect();
-    console.log("Server started on http://localhost:" + app.get("port"));
+    try {
+        await connect();
+        console.log("Server started on http://localhost:" + app.get('port'));
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 });

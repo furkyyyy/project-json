@@ -1,5 +1,6 @@
 <%- include("partials/navbar") %>
 
+<main class="flex-fill">
 <div class="container mt-4">
     <h1 class="mb-4">Movies</h1>
 
@@ -21,8 +22,8 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <% movies.forEach(movie => { %>
             <div class="col">
-                <div class="card h-100">
-                    <img src="<%= movie.imageUrl %>" class="card-img-top" alt="<%= movie.title %>">
+                <div class="card h-90" style="width: 100%; margin: auto;">
+                    <img src="<%= movie.imageUrl %>" class="card-img-top mt-2" alt="<%= movie.title %>" style="height: 530px; object-fit: contain;">
                     <div class="card-body">
                         <h5 class="card-title"><%= movie.title %></h5>
                         <p class="card-text"><%= movie.releaseYear %> - <%= movie.genre %></p>
@@ -36,5 +37,6 @@
         <% }) %>
     </div>
 </div>
+</main>
 
 <%- include("partials/footer") %>

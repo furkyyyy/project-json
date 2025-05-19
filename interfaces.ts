@@ -21,4 +21,4 @@ export interface Movie {
     actors: string[];
     contentRating: string;
     studio: Studio;
-}  
+}

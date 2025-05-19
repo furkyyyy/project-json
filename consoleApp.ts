@@ -13,7 +13,7 @@ function mainMenu(): void {
         console.log("2. Filter by ID");
         console.log("3. Exit");
 
-        const keuze = readline.questionInt("Please enter your choice: ", {limitMessage: "Input must be a number (1-3)"});
+        const keuze: number = readline.questionInt("Please enter your choice: ", {limitMessage: "Input must be a number (1-3)"});
         console.log();
         switch (keuze) {
             case 1:
@@ -31,17 +31,17 @@ function mainMenu(): void {
         }
         console.log();
     }
-}
+};
 
 function viewAllMovies(): void {
   for (const movie of movies) {
     console.log(`- ${movie.title} (${movie.id})`);
   }
-}
+};
 
 function filterById(): void {
-  const zoekId = readline.question("Please enter the ID you want to filter by: ");
-  let gevonden = false;
+  const zoekId: string = readline.question("Please enter the ID you want to filter by: ");
+  let gevonden: boolean = false;
   for (const movie of movies) {
     if (movie.id === zoekId) {
       gevonden = true;
@@ -66,11 +66,11 @@ function filterById(): void {
   if (!gevonden) {
     console.log("ID not found.");
   }
-}
+};
 
 function exitApp(): boolean {
   console.log("Goodbye!");
   return false;
-}
+};
 
 mainMenu();

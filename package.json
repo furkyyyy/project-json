@@ -9,17 +9,29 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongodb-session": "^5.0.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.16.0",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/connect-mongodb-session": "^2.4.8",
+    "@types/cookie-parser": "^1.4.8",
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.1",
+    "@types/express-session": "^1.18.1",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.17",
     "@types/node-fetch": "^2.6.12",
+    "@types/readline-sync": "^1.4.8",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"

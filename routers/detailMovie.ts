@@ -1,10 +1,11 @@
 import express, { Request, Response } from "express";
 import { getMovieById, getStudioById } from "../database";
 import { Movie, Studio } from "../interfaces";
+import { secureMiddleware } from "../middleware/secureMiddleware";
 
 const router = express.Router();
 
-router.get("/:id", async (req: Request, res: Response) => {
+router.get("/:id", secureMiddleware, async (req: Request, res: Response) => {
     const id = req.params.id;
     const movie: Movie | null = await getMovieById(id);
 

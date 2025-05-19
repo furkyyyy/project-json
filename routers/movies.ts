@@ -1,10 +1,11 @@
 import express, { Request, Response } from "express";
 import { getMovies, getStudios } from "../database";
 import { Movie, Studio } from "../interfaces";
+import { secureMiddleware } from "../middleware/secureMiddleware";
 
 const router = express.Router();
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/", secureMiddleware, async (req: Request, res: Response) => {
     const genre = typeof req.query.genre === "string" ? req.query.genre : "";
     const sortDirection = req.query.sort === "desc" ? "desc" : "asc";
 
